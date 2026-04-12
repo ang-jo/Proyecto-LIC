@@ -6,10 +6,26 @@
         <link rel="stylesheet" href="css/bootstrap.css">
         <title>Title</title>
     </head>
-    <body>
-        <div class="container">
-        <h1>Hola Mundo</h1>
-        <p>Hola mundo bot</p>
-        </div>    
+    <body class="bg-light d-flex justify-content-center align-items-center vh-100" style= "background-image: url('img/pokefondo.png')">
+        <div class="card p-4 shadow" style="width: 350px;">
+        <h4 class="text-center mb-3">Iniciar Sesión</h4>
+            <div class="mb-3">
+                <label class="form-label">Usuario</label>
+                <input type="text" id="usuario" class="form-control">
+            </div>
+            <div class="mb-3">
+        <label class="form-label">PIN</label>
+        <input type="password" pattern="[0-9]*" inputmode="numeric" id="pin" maxlength="4" class="form-control">
+    </div>
+
+    <button class="btn btn-primary w-100 mb-2">Ingresar</button>
+
+    <p class="text-center">
+        <a href="#">¿No tienes cuenta? Regístrate</a>
+    </p>
+
+    <div class="text-center mt-2"></div>
+
+        </div>
     </body>
 </html>
