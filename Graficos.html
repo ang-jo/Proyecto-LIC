@@ -23,9 +23,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Gráfico</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link">Salir</a>
-                </li>
             </ul>      
             <!-- Aqui se pondra el ussuario que se ingreso y su numero de cuenta-->
             <span class="navbar-brand order-2 order-lg-1 text-center text-lg-start">
@@ -41,7 +38,7 @@
             <!--indicador de en que pagina estas -->
 
         <div class="card">
-            <h4>Panel Principal</h4>
+            <h4>Graficos</h4>
             </div>
         <div class="container py-4">
 
@@ -49,70 +46,55 @@
 
     <!-- Saldo actual, se debe actualizar con el boton actualizar -->
     <div class="card mb-4 shadow-sm">
-        <div class="card-body text-center">
-            <h6>Saldo actual</h6>
-            <h3 id="saldo">$0</h3>
+    <div class="card-body">
+        <h6 class="text-center mb-4">Resumen de transacciones</h6>
+
+        <div class="d-flex justify-content-around align-items-end" style="height: 200px;">
+
+            <!-- Depósitos -->
+            <div class="text-center">
+                <div class="bg-success" style="width: 50px; height: 150px;"></div>
+                <small>Depósitos</small><br>
+                <strong>$300</strong>
+            </div>
+
+            <!-- Retiros -->
+            <div class="text-center">
+                <div class="bg-danger" style="width: 50px; height: 80px;"></div>
+                <small>Retiros</small><br>
+                <strong>$150</strong>
+            </div>
+
+            <!-- Pagos -->
+            <div class="text-center">
+                <div class="bg-primary" style="width: 50px; height: 110px;"></div>
+                <small>Pagos</small><br>
+                <strong>$200</strong>
+            </div>
+
         </div>
     </div>
+</div>
 
-    <!--acciones del panel principal -->
-    <div class="row g-3">
-
-        <!--depositar dinero -->
-        <div class="col-md-6">
-            <div class="card p-3 shadow-sm">
-                <h6>Depositar</h6>
-                <input type="number" id="deposito" class="form-control mb-2" placeholder="Monto">
-                <button class="btn btn-success w-100">Depositar</button>
-            </div>
-        </div>
-
-        <!--retirar dinero -->
-        <div class="col-md-6">
-            <div class="card p-3 shadow-sm">
-                <h6>Retirar</h6>
-                <input type="number" id="retiro" class="form-control mb-2" placeholder="Monto">
-                <button class="btn btn-warning w-100">Retirar</button>
-            </div>
-        </div>
-
-        <!-- Pagar servicios -->
-        <div class="col-md-6">
-            <div class="card p-3 shadow-sm">
-                <h6>Pagar servicios</h6>
-                <input type="number" id="servicio" class="form-control mb-2" placeholder="Monto">
-                <button class="btn btn-primary w-100">Pagar</button>
-            </div>
-        </div>
-
-        <!-- Consultar/ actualizar saldo -->
-        <div class="col-md-6">
-            <div class="card p-3 shadow-sm d-flex justify-content-center">
-              
-                <button class="btn btn-info w-100 mt-2">Actualizar</button>
-            </div>
-        </div>
-
-    </div>
 
   
 
 </div>
     </div>
 
-    <!-- pestaña de historial de trasnacciones -->
+    <!-- pestaña de historial de trasnacciones
     <div id="historial" class="card d-none">
         <h4>Historial de Transacciones</h4>
         <ul id="listaHistorial" class="list-group"></ul>
     </div>
 
-    <!-- pestaña de graficos -->
+    <!-- pestaña de graficos 
     <div id="grafico" class="card d-none">
         <h4>Gráfico de Transacciones</h4>
         
         
     </div>
-
+    -->
 </div>
     
     
