@@ -194,9 +194,6 @@
 }
 
 body {
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 100vh;
   margin: 0;
   font-family: var(--bs-body-font-family);
   font-size: var(--bs-body-font-size);
@@ -2982,6 +2979,7 @@ textarea.form-control-lg {
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
+  box-shadow: 4px 4px 0px black;
   user-select: none;
   border: var(--bs-btn-border-width) solid var(--bs-btn-border-color);
   border-radius: var(--bs-btn-border-radius);
