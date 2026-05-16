@@ -5,10 +5,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <link rel="stylesheet" href="css/bootstrap.css">
         <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
+
         <title>Title</title>
     </head>
     <body class="bg-light d-flex justify-content-center align-items-center vh-100" style= "background-image: url('img/pokefondo.png'); font-family: 'Press Start 2P', cursive;">
         <div class="card p-4 shadow" style="width: 350px;">
+            
+            <div id="loginBox">
         <h4 class="text-center mb-3">Iniciar Sesión</h4>
             <div class="mb-3">
                 <label class="form-label">Usuario</label>
@@ -19,14 +23,86 @@
         <input type="password" pattern="[0-9]*" inputmode="numeric" id="pin" maxlength="4" class="form-control">
     </div>
 
-    <button class="btn btn-primary w-100 mb-2">Ingresar</button>
+    <button type="button" class="btn btn-primary w-100 mb-2" onclick="iniciarSesion()">Ingresar</button>
 
     <p class="text-center">
-        <a href="#">¿No tienes cuenta? Regístrate</a>
+        <a href="#" onclick="mostrarRegistro()" >¿No tienes cuenta? Regístrate</a>
     </p>
-
     <div class="text-center mt-2"></div>
 
+            </div>
+            <!-- registrooooooooooooooooooo-->
+
+          <div id="registroBox" class="hidden">
+
+            <h4 class="text-center mb-4">Registrarse</h4>
+
+            <div class="mb-3">
+                <label class="form-label">Nombre</label>
+
+                <input 
+                    type="text"
+                    id="nombreRegistro"
+                    class="form-control"
+                >
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Apellido</label>
+
+                <input 
+                    type="text"
+                    id="apellidoRegistro"
+                    class="form-control"
+                >
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Usuario</label>
+
+                <input 
+                    type="text"
+                    id="usuarioRegistro"
+                    class="form-control"
+                >
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">PIN</label>
+
+                <input 
+                    type="password"
+                    id="passwordRegistro"
+                    maxlength="4"
+                    inputmode="numeric"
+                    class="form-control"
+                >
+            </div>
+
+            <button 
+                class="btn btn-success w-100 mb-3"
+                onclick="registrar()"
+            >
+                Crear Cuenta
+            </button>
+
+            <p class="text-center">
+                <a href="#" onclick="mostrarLogin()">
+                    ¿Ya tienes cuenta? Inicia sesión
+                </a>
+            </p>
+
         </div>
+
+            <div 
+            class="text-center mt-2"
+            id="mensaje"
+            ></div>
+            
+        </div>
+        
+                <!-- conectar la interfaz con el js-->
+    <script src="js/Login.js"></script>
     </body>
+    
 </html>
