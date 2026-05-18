@@ -53,7 +53,6 @@ function depositar(){
         JSON.stringify(usuarioActivo)
     );
 
-    // ACTUALIZAR ARRAY DE USUARIOS
     let usuarios = JSON.parse(
         localStorage.getItem("usuarios")
     ) || [];
@@ -135,7 +134,7 @@ function retirar(){
         JSON.stringify(usuarioActivo)
     );
 
-    // ACTUALIZAR ARRAY DE USUARIOS
+    // actualiz el ussuario
     let usuarios = JSON.parse(
         localStorage.getItem("usuarios")
     ) || [];
@@ -179,7 +178,7 @@ function pagarServicio(){
         document.getElementById("servicio").value
     );
 
-    // VALIDACIONES
+    
     if(tipoServicio === ""){
 
         mostrarMensaje(
@@ -200,7 +199,6 @@ function pagarServicio(){
         return;
     }
 
-    // VALIDAR SALDO
     if(monto > usuarioActivo.Balance){
 
         mostrarMensaje(
@@ -211,10 +209,8 @@ function pagarServicio(){
         return;
     }
 
-    // DESCONTAR SALDO
     usuarioActivo.Balance -= monto;
     
-    //push al historial
     usuarioActivo.historial.push({
 
     tipo: tipoServicio,
@@ -223,11 +219,10 @@ function pagarServicio(){
 
 });
 
-    // ACTUALIZAR SALDO EN PANTALLA
+    //actualiza el saldo o balance
     document.getElementById("saldo").innerText =
         "$" + usuarioActivo.Balance;
 
-    // GUARDAR SESION ACTIVA
     localStorage.setItem(
         "sesionActiva",
         JSON.stringify(usuarioActivo)
@@ -268,7 +263,7 @@ function pagarServicio(){
 
 function mostrarMensaje(texto, tipo){
 
-    const mensaje = document.getElementById("mensaje");
+    //const mensaje = document.getElementById("mensaje");
 
     swal({
         title: texto,

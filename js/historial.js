@@ -18,14 +18,12 @@ mostrarHistorial();
 
 function mostrarHistorial(){
 
-    const tabla = document.getElementById(
-        "tablaTransacciones"
-    );
+    const tabla = document.getElementById("tablaTransacciones");
 
-    // LIMPIAR TABLA
+    
     tabla.innerHTML = "";
 
-    // VALIDAR SI HAY HISTORIAL
+    
     if(
         !usuarioActivo.historial ||
         usuarioActivo.historial.length === 0
@@ -34,7 +32,7 @@ function mostrarHistorial(){
         tabla.innerHTML = `
 
             <tr>
-                <td colspan="3">
+                <td colspan="4">
                     No hay transacciones
                 </td>
             </tr>
@@ -44,8 +42,8 @@ function mostrarHistorial(){
         return;
     }
 
-    // RECORRER HISTORIAL
-    usuarioActivo.historial.forEach(function(transaccion){
+    
+    usuarioActivo.historial.forEach(function(transaccion, index){
 
         tabla.innerHTML += `
 
@@ -62,6 +60,14 @@ function mostrarHistorial(){
                 <td>
                     $${transaccion.monto}
                 </td>
+                <td>
+                    <button
+                        class="btn btn-danger btn-sm"
+                        onclick="generarPDF(${index})">
+                        PDF
+                    </button>
+
+                </td>
 
             </tr>
 
@@ -71,6 +77,73 @@ function mostrarHistorial(){
 
 }
 
+function generarPDF(index){
+
+    const transaccion =
+        usuarioActivo.historial[index];
+
+    const { jsPDF } = window.jspdf;
+
+    const doc = new jsPDF();
+
+    // TITULO
+    doc.setFontSize(18);
+
+    doc.text(
+        "Comprobante de Transacción",
+        20,
+        20
+    );
+
+    // DATOS USUARIO
+    doc.setFontSize(12);
+
+    doc.text(
+        "Usuario: " + usuarioActivo.usuario,
+        20,
+        40
+    );
+
+    doc.text(
+        "Cuenta: #" +
+        usuarioActivo.numeroCuenta,
+        20,
+        50
+    );
+
+    doc.text(
+        "Fecha: " +
+        transaccion.fecha,
+        20,
+        70
+    );
+
+    doc.text(
+        "Tipo: " +
+        transaccion.tipo,
+        20,
+        80
+    );
+
+    doc.text(
+        "Monto: $" +
+        transaccion.monto,
+        20,
+        90
+    );
+
+    doc.text(
+        "Saldo actual: $" +
+        usuarioActivo.Balance,
+        20,
+        110
+    );
+
+    doc.save(
+        "transaccion_" + index + ".pdf"
+    );
+
+}
 
 function mostrarMensaje(texto, tipo){
 

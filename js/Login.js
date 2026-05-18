@@ -1,4 +1,38 @@
+NacimientoDeAsh();
+function NacimientoDeAsh(){
 
+    let usuarios = JSON.parse(
+        localStorage.getItem("usuarios")
+    ) || [];
+    const existe = usuarios.some(
+
+        usuario => usuario.numeroCuenta === "0987654321"
+
+    );
+
+    if(!existe){
+
+        const usuarioBase = {
+
+            nombre: "Ash",
+            apellido: "Ketchum",
+            usuario: "Ash Ketchum",
+            password: "1234",
+            numeroCuenta: "0987654321",
+            Balance: 500,
+            historial: []
+            
+        };
+
+        usuarios.push(usuarioBase);
+
+        localStorage.setItem(
+            "usuarios",
+            JSON.stringify(usuarios)
+        );
+
+    }
+}
 
 
 
@@ -50,10 +84,8 @@ function validarUsuario(usuarioObjeto){
 
         };
 
-        // validar
         const errores = validate(usuarioObjeto, constraints);
 
-        // resultado
         if(errores){
 
             let mensajes = "";
@@ -75,7 +107,7 @@ function validarUsuario(usuarioObjeto){
 
 
 
-// registrar
+// fun registrar
 function registrar(){
 
     const nuevoUsuario = {
@@ -98,7 +130,7 @@ function registrar(){
     let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
     
-    // VERIFICAR SI EL USUARIO EXISTE
+    // verifiiicaar
     const existe = usuarios.find(
 
         u => u.usuario === nuevoUsuario.usuario
@@ -210,29 +242,37 @@ function limpiarCampos(){
 
 function generarNumeroCuenta(){
 
-    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+      const usuarios = JSON.parse(
+        localStorage.getItem("usuarios")
+    ) || [];
 
     let numeroCuenta;
-    let existe;
+    let existe = true;
 
-    do{
+    while(existe){
 
-        numeroCuenta = Math.floor(
-            10000000 + Math.random() * 90000000
-        );
+        numeroCuenta = "";
 
-        existe = false;
+        for(let i = 0; i < 10; i++){
 
-for(let i = 0; i < usuarios.length; i++){
+            numeroCuenta += Math.floor(
+                Math.random() * 10
+            );
 
-    if(usuarios[i].numeroCuenta === numeroCuenta){
+        }
+        
+        const cuentaGenerada = numeroCuenta;
 
-        existe = true;
-        break;
+        existe = usuarios.some(function(usuario){
+
+            return (
+                usuario.numeroCuenta ===
+                cuentaGenerada
+            );
+
+        });
 
     }
-        }
-            }while(existe);
 
     return numeroCuenta;
 
@@ -240,7 +280,7 @@ for(let i = 0; i < usuarios.length; i++){
 
 function mostrarMensaje(texto, tipo){
 
-    const mensaje = document.getElementById("mensaje");
+    //const mensaje = document.getElementById("mensaje");
 
     swal({
         title: texto,

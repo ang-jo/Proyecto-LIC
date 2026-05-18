@@ -18,7 +18,7 @@ generarGrafico();
 
 function generarGrafico(){
 
-    // CONTADORES
+
     let depositos = 0;
     let retiros = 0;
     let agua = 0;
@@ -59,7 +59,7 @@ function generarGrafico(){
 
     });
 
-    // OBTENER CANVAS
+  
     const ctx = document.getElementById(
         "graficoTransacciones"
     );
