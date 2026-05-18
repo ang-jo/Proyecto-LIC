@@ -65,7 +65,7 @@ function depositar(){
             usuarioActivo.numeroCuenta
         ){
 
-            usuarios[i].Balance = usuarioActivo.Balance;
+             usuarios[i] = usuarioActivo;
 
             break;
         }
@@ -147,7 +147,7 @@ function retirar(){
             usuarioActivo.numeroCuenta
         ){
 
-            usuarios[i].Balance = usuarioActivo.Balance;
+            usuarios[i] = usuarioActivo;
 
             break;
         }
@@ -245,8 +245,7 @@ function pagarServicio(){
             usuarioActivo.numeroCuenta
         ){
 
-            usuarios[i].Balance =
-                usuarioActivo.Balance;
+            usuarios[i] = usuarioActivo;
 
             break;
         }
@@ -281,4 +280,18 @@ function mostrarMensaje(texto, tipo){
 function salir (){
     window.location.href = "index.html";
     localStorage.removeItem("sesionActiva");
+}
+function Irhistorial (){
+    window.location.href = "Historial.html";
+    
+}
+
+function Irgraficos (){
+    window.location.href = "Graficos.html";
+    
+}
+
+function Irinterfaz (){
+    window.location.href = "interfaz.html";
+    
 }

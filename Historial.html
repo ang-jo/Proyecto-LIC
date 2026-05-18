@@ -15,19 +15,20 @@
         <div class="container-fluid d-flex flex-column flex-lg-row">
             <ul class="navbar-nav order-1 order-lg-2 ms-lg-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Principal</a>
+                    <a class="nav-link" href="#" onclick="Irinterfaz()">Principal</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Historial</a>
+                    <a class="nav-link active" href="#" onclick="Irhistorial()">Historial</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Gráfico</a>
+                    <a class="nav-link" href="#" onclick="Irgraficos()">Gráfico</a>
                 </li>
-            </ul>      
+                <li class="nav-item">
+                    <a class="nav-link" onclick="salir()">Salir</a>
+                </li>
+            </ul>       
             <!-- Aqui se pondra el ussuario que se ingreso y su numero de cuenta-->
-            <span class="navbar-brand order-2 order-lg-1 text-center text-lg-start">
-            Usuario #numero de usuario
-        </span>
+            <span class="navbar-brand order-2 order-lg-1 text-center text-lg-start" id="Usuario-activo"></span>
         </div>
     
 </nav>
@@ -59,16 +60,7 @@
                     </tr>
                 </thead>
                 <tbody id="tablaTransacciones">
-                    <tr>
-                        <td>12/04/2026</td>
-                        <td>Depósito</td>
-                        <td>$100.00</td>
-                    </tr>
-                    <tr>
-                        <td>11/04/2026</td>
-                        <td>Retiro</td>
-                        <td>$50.00</td>
-                    </tr>
+                    
                 </tbody>
             </table>
         </div>
@@ -100,6 +92,8 @@
 </div>
     
     
-    
+     <!-- alertas bonitas :D-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>  
+    <script src="js/historial.js"></script>
     </body>
 </html>

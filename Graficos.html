@@ -12,22 +12,23 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <!--Menu superior -->
 
-        <div class="container-fluid d-flex flex-column flex-lg-row">
+    <div class="container-fluid d-flex flex-column flex-lg-row">
             <ul class="navbar-nav order-1 order-lg-2 ms-lg-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Principal</a>
+                    <a class="nav-link" href="#" onclick="Irinterfaz()">Principal</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Historial</a>
+                    <a class="nav-link" href="#" onclick="Irhistorial()">Historial</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Gráfico</a>
+                    <a class="nav-link active" href="#" onclick="Irgraficos()">Gráfico</a>
                 </li>
-            </ul>      
+                <li class="nav-item">
+                    <a class="nav-link" onclick="salir()">Salir</a>
+                </li>
+            </ul>       
             <!-- Aqui se pondra el ussuario que se ingreso y su numero de cuenta-->
-            <span class="navbar-brand order-2 order-lg-1 text-center text-lg-start">
-            Usuario #numero de usuario
-        </span>
+            <span class="navbar-brand order-2 order-lg-1 text-center text-lg-start" id="Usuario-activo"></span>
         </div>
     
 </nav>
@@ -47,32 +48,17 @@
     <!-- Saldo actual, se debe actualizar con el boton actualizar -->
     <div class="card mb-4 shadow-sm">
     <div class="card-body">
-        <h6 class="text-center mb-4">Resumen de transacciones</h6>
+       <div class="card-body">
 
-        <div class="d-flex justify-content-around align-items-end" style="height: 200px;">
+        <h5 class="text-center">
+             Numero de transacciones de cada tipo
+        </h5>
 
-            <!-- Depósitos -->
-            <div class="text-center">
-                <div class="bg-success" style="width: 50px; height: 150px;"></div>
-                <small>Depósitos</small><br>
-                <strong>$300</strong>
-            </div>
+        <canvas id="graficoTransacciones"></canvas>
 
-            <!-- Retiros -->
-            <div class="text-center">
-                <div class="bg-danger" style="width: 50px; height: 80px;"></div>
-                <small>Retiros</small><br>
-                <strong>$150</strong>
-            </div>
+    </div>
 
-            <!-- Pagos -->
-            <div class="text-center">
-                <div class="bg-primary" style="width: 50px; height: 110px;"></div>
-                <small>Pagos</small><br>
-                <strong>$200</strong>
-            </div>
-
-        </div>
+        
     </div>
 </div>
 
@@ -97,7 +83,11 @@
     -->
 </div>
     
-    
+         <!-- alertas bonitas :D-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>  
+    <script src="js/graficos.js"></script>
+
     
     </body>
 </html>
