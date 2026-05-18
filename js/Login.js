@@ -3,8 +3,8 @@
 
 
 
-// validatejs
 
+// validatejs
 function validarUsuario(usuarioObjeto){
 
         
@@ -56,11 +56,15 @@ function validarUsuario(usuarioObjeto){
         // resultado
         if(errores){
 
-            console.log("Errores encontrados:");
+            let mensajes = "";
 
             for(let campo in errores){
-                console.log(errores[campo][0]);
+
+                mensajes += errores[campo][0] + "\n";
+
             }
+
+            mostrarMensaje(mensajes, "warning");
 
             return false;
 
@@ -69,6 +73,8 @@ function validarUsuario(usuarioObjeto){
         return true;
     }
 
+
+
 // registrar
 function registrar(){
 
@@ -76,24 +82,47 @@ function registrar(){
         nombre: document.getElementById("nombreRegistro").value,
         apellido: document.getElementById("apellidoRegistro").value,
         usuario: document.getElementById("usuarioRegistro").value,
-        password: document.getElementById("passwordRegistro").value
+        password: document.getElementById("passwordRegistro").value,
+        numeroCuenta: generarNumeroCuenta(),
+        Balance: 500,
+        historial: []
 
     };
 
     // Validar antes de guardar
     if(!validarUsuario(nuevoUsuario)){
-        mostrarMensaje("Datos inválidos", "red");
         return;
     }
 
+    //
     let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+    
+    // VERIFICAR SI EL USUARIO EXISTE
+    const existe = usuarios.find(
+
+        u => u.usuario === nuevoUsuario.usuario
+
+    );
+
+    if(existe){
+
+        mostrarMensaje(
+            "Ese nombre de usuario ya existe",
+            "error"
+        );
+
+        return;
+    }
+    
+    
 
     //guarda el ussuario
     usuarios.push(nuevoUsuario);
 
     localStorage.setItem("usuarios", JSON.stringify(usuarios));
 
-    mostrarMensaje("Usuario registrado", "green");
+    mostrarMensaje("Usuario registrado", "success");
     
     limpiarCampos();
     
@@ -133,7 +162,7 @@ function registrar(){
                 console.log(localStorage.getItem("usuarios"));
                 mostrarMensaje(
                     "Bienvenido " + encontrado.nombre,
-                    "green"
+                    "success"
                     
                     
                 );
@@ -153,18 +182,18 @@ function registrar(){
                 console.log(localStorage.getItem("usuarios"));
                 mostrarMensaje(
                     "Usuario o PIN incorrectos",
-                    "red"
+                    "error"
                 );
 
             }
 
         } //termina funcion inicio se sesion (login)
 
-function limpiarMensaje(){
+/*function limpiarMensaje(){
 
             document.getElementById("mensaje").innerText = "";
 
-        }
+        }*/
 
         // LIMPIAR
 function limpiarCampos(){
@@ -176,13 +205,48 @@ function limpiarCampos(){
 
         }
 
-function mostrarMensaje(texto, color){
+
+//Funcion para asignarle numero aleatorio a las cuentas
+
+function generarNumeroCuenta(){
+
+    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+    let numeroCuenta;
+    let existe;
+
+    do{
+
+        numeroCuenta = Math.floor(
+            10000000 + Math.random() * 90000000
+        );
+
+        existe = false;
+
+for(let i = 0; i < usuarios.length; i++){
+
+    if(usuarios[i].numeroCuenta === numeroCuenta){
+
+        existe = true;
+        break;
+
+    }
+        }
+            }while(existe);
+
+    return numeroCuenta;
+
+}
+
+function mostrarMensaje(texto, tipo){
 
     const mensaje = document.getElementById("mensaje");
 
-    mensaje.innerText = texto;
-    mensaje.style.color = color;
-
+    swal({
+        title: texto,
+        icon: tipo,
+        button: "Aceptar"
+    });
 }
 
 

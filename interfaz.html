@@ -24,12 +24,12 @@
                     <a class="nav-link" href="#">Gráfico</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link">Salir</a>
+                    <a class="nav-link" onclick="salir()">Salir</a>
                 </li>
             </ul>      
             <!-- Aqui se pondra el ussuario que se ingreso y su numero de cuenta-->
-            <span class="navbar-brand order-2 order-lg-1 text-center text-lg-start">
-            Usuario #numero de usuario
+            <span class="navbar-brand order-2 order-lg-1 text-center text-lg-start" id="Usuario-activo">
+           
         </span>
         </div>
     
@@ -63,7 +63,7 @@
             <div class="card p-3 shadow-sm">
                 <h6>Depositar</h6>
                 <input type="number" id="deposito" class="form-control mb-2" placeholder="Monto">
-                <button class="btn btn-success w-100">Depositar</button>
+                <button class="btn btn-success w-100" onclick="depositar()">Depositar</button>
             </div>
         </div>
 
@@ -72,7 +72,7 @@
             <div class="card p-3 shadow-sm">
                 <h6>Retirar</h6>
                 <input type="number" id="retiro" class="form-control mb-2" placeholder="Monto">
-                <button class="btn btn-warning w-100">Retirar</button>
+                <button class="btn btn-warning w-100" onclick="retirar()">Retirar</button>
             </div>
         </div>
 
@@ -80,8 +80,20 @@
         <div class="col-md-6">
             <div class="card p-3 shadow-sm">
                 <h6>Pagar servicios</h6>
+                   <!-- SELECT DE SERVICIOS -->
+        <select id="tipoServicio" class="form-select mb-2">
+
+            <option value="Agua">Agua</option>
+
+            <option value="Electricidad">Electricidad</option>
+
+            <option value="Internet">Internet</option>
+
+            <option value="Telefonía">Telefonía</option>
+
+        </select>
                 <input type="number" id="servicio" class="form-control mb-2" placeholder="Monto">
-                <button class="btn btn-primary w-100">Pagar</button>
+                <button class="btn btn-primary w-100" onclick="pagarServicio()">Pagar</button>
             </div>
         </div>
 
@@ -115,7 +127,8 @@
 
 </div>
     
-    
-    
+     <!-- alertas bonitas :D-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>  
+    <script src="js/interfaz.js"></script>
     </body>
 </html>
